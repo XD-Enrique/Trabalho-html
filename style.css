@@ -1,47 +1,39 @@
 /* Importando fontes do Google */
 @import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Road+Rage&display=swap');
 
-/* reseta margens, paddings defini rolagem suave */
+/* Resetando margens, paddings e definindo rolagem suave */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth; /* Rolagem suave para links */
+    scroll-behavior: smooth;
 }
+
+/* Ajustando margem de rolagem para evitar que seções fiquem atrás do header */
 #shows, #fotos, #contatos { 
-    scroll-margin-top:80px;
-}
-#topo{
-    scroll-margin-top: 160px;
+    scroll-margin-top: 80px;
 }
 
-/* Configuração geral do corpo do site */
+/* Configuração geral do site */
 body {
-    scroll-padding-top: -1000px; /* Ajuste conforme a altura do seu header */
-    font-family: "Pathway Gothic One", sans-serif; 
-    background-color: #111; 
-    color: #fff; 
-    text-align: center; 
+    font-family: "Pathway Gothic One", sans-serif;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
 }
 
-/* Cabeçalho fixo com menu */
+/* HEADER padrão (desktop) */
 header {
-    background-color: rgba(0, 0, 0, 0.8); /* quase transparente */
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 20px;
-    position: fixed; /* fixa o cabeçalho */
+    position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 100; /* deixa em cima de outros elementos */
+    z-index: 100;
     transition: 0.3s ease-in-out;
 }
-.fonte-Backseat {
-    width: 1000px;
-    font-family: "Road Rage", sans-serif;
-    
-}
 
-/* Navegação do menu */
 .menu ul {
     list-style: none;
     display: flex;
@@ -77,54 +69,45 @@ h1 {
     transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Efeito de hover */
+/* Efeito de hover no título */
 h1:hover {
-    transform: scale(1.05) rotate(-1deg); /* Aumenta e inclina um pouco */
-    text-shadow: 0px 0px 20px rgba(255, 0, 76, 0.7); /* Brilho rosa */
+    transform: scale(1.05) rotate(-1deg);
+    text-shadow: 0px 0px 20px rgba(255, 0, 76, 0.7);
 }
 
-
-
-/* Seção de fotos e rolagem horizontal */
-
-#fotos::before {    /* cria um espaço que compensa o header fixo */
-    content: "";
-    display: block;
-    height: 80px;        
-    margin-top: 80px;  
-}
-
+/* Seção de Fotos com rolagem infinita */
 #fotos {
-    overflow-x: scroll; /* rolagem horizontal */
-    white-space: nowrap; /* n quebra a linha */
-    padding: 20px 0; 
-    
-    /* Oculta a barra de rolagem */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-#fotos::-webkit-scrollbar {
-    display: none; /* Chrome, Safari e Opera */
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    display: flex;
+    gap: 15px;
+    animation: rolagem-infinita 20s linear infinite;
 }
 
-/* Estilização das imagens ampliadas */
 #fotos img {
-    display: inline-block; /* deixa as imagens em linha */
     height: 400px;
-    margin: 0 15px;
-    object-fit: cover; /* imagem n distorce */
-    transition: transform 0.3s ease; /* efeito suave ao passar o mouse */
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
-
 
 /* Efeito hover nas imagens */
 #fotos img:hover {
     transform: scale(1.05);
 }
 
-/* Seção de Shows */
+/* Animação de rolagem infinita */
+@keyframes rolagem-infinita {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
 
-#shows  {
+/* Seção de Shows */
+#shows {
     padding: 40px 20px;
 }
 
@@ -187,34 +170,63 @@ footer p {
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 60px;
-        margin-top: 180px;
+    /* Header vira menu lateral */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        z-index: 100;
     }
-    
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
     .menu ul {
         flex-direction: column;
-        gap: 10px;
+        padding: 0;
     }
-    
-    .menu ul li a {
-        font-size: 16px;
+
+    .menu ul li {
+        margin: 10px 0;
     }
-    
-    /* Ajusta a altura das imagens na seção de fotos */
+
+    /* Empurra o conteúdo para direita */
+    body {
+        margin-left: 60px;
+    }
+
+    /* Ajusta o tamanho do título */
+    h1 {
+        font-size: 80px;
+        margin-top: 150px;
+    }
+
+    /* Ajusta imagens da galeria */
     #fotos img {
         height: 250px;
-        margin: 0 10px;
     }
-    
+
+    /* Ajusta títulos e textos menores */
     #shows h2 {
         font-size: 36px;
     }
-    
+
     #shows li {
         font-size: 18px;
     }
-    
+
     footer a {
         font-size: 16px;
     }
