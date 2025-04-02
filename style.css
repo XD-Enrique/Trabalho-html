@@ -17,7 +17,7 @@
 
 /* Configuração geral do corpo do site */
 body {
-    scroll-padding-top: -1000px; /* Ajuste conforme a altura do seu header */
+    scroll-padding-top: -1000px; /* Ajuste conforme a altura do header */
     font-family: "Pathway Gothic One", sans-serif; 
     background-color: #111; 
     color: #fff; 
