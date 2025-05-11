@@ -220,3 +220,41 @@ footer p {
         font-size: 16px;
     }
 }
+
+
+ /* teste */
+
+.carousel {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+}
+
+.carousel figure {
+  min-width: 100%;
+  margin: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+  width: 100%;
+  display: block;
+}
+
+.anterior, .proximo {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.anterior { left: 10px; }
+.proximo { right: 10px; }
