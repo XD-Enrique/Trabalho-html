@@ -31,7 +31,7 @@
         <h1>BACKSEAT</h1>
 
         <!-- GALERIA DE FOTOS -->
-        <section id="fotos">
+        <section id="fotos" class="carousel">
             <img src="https://i.pinimg.com/736x/33/53/1c/33531c2c14a4a7b2d537de20fe51b27a.jpg" alt="instrumento">
             <img src="https://i.pinimg.com/736x/a7/74/15/a77415eaf6ead0ff33d7314105649439.jpg" alt="instrumento">
             <img src="https://i.pinimg.com/736x/6c/83/32/6c83321700a116c2283afdb676ea06b1.jpg" alt="instrumento">
@@ -95,6 +95,22 @@
         <p> © 2025 Backseat. Todos os direitos reservados.</p>
         
      </footer>
+<script>
+  const slides = document.querySelectorAll('#fotos figure');
+  let index = 0;
 
+  function atualizarCarrossel() {
+    slides.forEach((figura, i) => {
+      figura.style.transform = `translateX(-${index * 100}%)`;
+    });
+  }
+
+  function trocar(direcao) {
+    index = (index + direcao + slides.length) % slides.length;
+    atualizarCarrossel();
+  }
+
+  setInterval(() => trocar(1), 5000); // auto-play
+</script>
 </body>
 </html>
