@@ -119,7 +119,13 @@ h1:hover {
 
 /* Efeito hover nas imagens */
 #fotos img:hover {
-    transform: scale(1.05);
+   transform: scale(1.05) rotate(5deg);
+    animation: girar 2s infinite linear;
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1.05); }
 }
 
 /* Seção de Shows */
