@@ -119,7 +119,7 @@ h1:hover {
 
 /* Efeito hover nas imagens */
 #fotos img:hover {
-   transform: scale(1.05) rotate(5deg);
+   transform: scale(1.05);
     animation: girar 2s infinite linear;
 }
 
